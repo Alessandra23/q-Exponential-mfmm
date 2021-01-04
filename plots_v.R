@@ -3,6 +3,7 @@
 #'
 
 library(gridExtra)
+theme_set(theme_bw())
 
 # values of v>0
 v1 <- seq(0.1,0.5,0.1)

@@ -8,6 +8,7 @@
 rm(list = ls())
 library(tidyverse)
 library(ggplot2)
+theme_set(theme_bw())
 
 prob.asym <- function(n,values,v, u=-v){
   

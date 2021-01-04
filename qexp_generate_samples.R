@@ -6,7 +6,7 @@
 #' @param theta Numeric. True value of theta
 #' @param mu Numeric. True value of mu
 #' 
-#' @example G.samples(N = 10, n = 2, theta = 1, mu = 2)
+#' @example qexp.samples(N = 10, n = 2, theta = 1, mu = 2)
 #' 
 #' 
 
