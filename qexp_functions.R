@@ -11,7 +11,7 @@
 #' tsal.q.from.shape		Get q from from shape parameter
 #' tsal.kappa.from.ss		Get kappa from shape, scale
 #' tsal.ss.from.qk		Get shape, scale from q, kappa (as pairs)
-#' tsal.qk.from.ss		Get q, kappa from shape, scale (as pairs
+#' tsal.qk.from.ss		Get q, kappa from shape, scale (as pairs)
 
 
 #################################################################
