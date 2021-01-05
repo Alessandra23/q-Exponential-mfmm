@@ -57,18 +57,18 @@ mfmm.theo <- function(n, mu, theta, v, u = -v, samples, d=1e-10){
 
 
 # Select only theta.pad
-gen_theta_pad <- function(N, n, v, mu, theta){
-
-  samples <- qexp.samples(N=N,n=n,theta=theta,mu=mu)
-  theta.hat.pad <- mfmm.theo(n = n, mu = mu, theta = theta, v = v, u = -v, samples = samples)$theta.hat.pad
+gen_q_pad <- function(N, n, v, mu, theta){
   
-  return(theta.hat.pad)
+  samples <- qexp.samples(N=N,n=n,theta=theta,mu=mu)
+  q.hat.pad <- mfmm.theo(n = n, mu = mu, theta = theta, v = v, u = -v, samples = samples)$q.hat.pad
+  
+  return(q.hat.pad)
 }
 
 
 
 # Function to create the plot of theta stan comp n
-comp.n.theta.pad <- function(values, n.values, v.values){
+comp.n.q.pad <- function(values, n.values, v.values){
   
   y <- lapply(v.values, function(values, v, n){
     
@@ -77,7 +77,7 @@ comp.n.theta.pad <- function(values, n.values, v.values){
     theta <- values$theta
     n <- n
     
-    x <- lapply(n, gen_theta_pad, N = N, v = v, mu = mu, theta = theta)
+    x <- lapply(n, gen_q_pad, N = N, v = v, mu = mu, theta = theta)
     names(x) <- n
     
     return(x)
@@ -89,12 +89,12 @@ comp.n.theta.pad <- function(values, n.values, v.values){
   y <- melt(y)
   
   p <- ggplot(melt(y),aes(x = value, group = L2)) +
-        geom_density(aes(linetype=factor(L2)))+ 
-        facet_wrap( ~ L1, labeller = label_bquote(paste("v = ",.(L1))))+ 
-        stat_function(fun = dnorm,n=101, args = list(mean = 0, sd = 1),aes(linetype="Normal")) +
-        scale_linetype_manual(name="n",values=c("dashed","dotdash", "dotted","solid")) +
-        labs(y = "Density", x = expression(hat(theta)[MFP]))+
-        xlim(c(-5,5))
+    geom_density(aes(linetype=factor(L2)))+ 
+    facet_wrap( ~ L1, labeller = label_bquote(paste("v = ",.(L1))))+ 
+    stat_function(fun = dnorm,n=101, args = list(mean = 0, sd = 1),aes(linetype="Normal")) +
+    scale_linetype_manual(name="n",values=c("dashed","dotdash", "dotted","solid")) +
+    labs(y = "Density", x = expression(hat(q)[MFP]))+
+    xlim(c(-5,5))
   
   return(p)
 }
@@ -110,7 +110,7 @@ values <- list(N = 100,
 n.values = c(50, 91, 1000)
 v.values <- c(0.1,0.2,0.3,0.4)
 
-comp.n.theta.pad(values = values, n.values = n.values, v.values = v.values)
+comp.n.q.pad(values = values, n.values = n.values, v.values = v.values)
 
 
 #' theta = 1, n = 153, 305, 5000
@@ -121,7 +121,7 @@ values <- list(N = 100,
 n.values = c(153, 305, 5000)
 v.values <- c(0.1,0.2,0.3,0.4)
 
-comp.n.theta.pad(values = values, n.values = n.values, v.values = v.values)
+comp.n.q.pad(values = values, n.values = n.values, v.values = v.values)
 
 
 #' theta = 9, n = 4179, 9987, 25000
@@ -132,7 +132,7 @@ values <- list(N = 100,
 n.values = c(4179, 9987, 25000)
 v.values <- c(0.1,0.2,0.3,0.4)
 
-comp.n.theta.pad(values = values, n.values = n.values, v.values = v.values)
+comp.n.q.pad(values = values, n.values = n.values, v.values = v.values)
 
 
 
