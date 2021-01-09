@@ -104,6 +104,11 @@ p.qk.q <- ggplot(melt(df.qk.q,id.vars='x'), aes(x,value,group=variable))+
 
 p.qk.q
 
+
+
+
+grid.arrange(p.qk.k,p.qk.q, nrow = 1)
+
 #####
 
 # Plots qexp mu and theta
