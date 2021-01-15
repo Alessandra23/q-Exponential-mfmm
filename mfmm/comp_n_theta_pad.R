@@ -30,22 +30,22 @@ mfmm.theo <- function(n, mu, theta, v, u = -v, samples, d=1e-10){
   
   # T_v^u/T_u^v
   mu.uv <- (rowMeans(samples^v)^u)/(rowMeans(samples^u)^v) 
-  # Selecionando a amostra
+  # Selecting the sample
   ifelse(v>0,samp.cond <- mu.uv[mu.uv > lim.inf & mu.uv < lim.sup],
          samp.cond <- mu.uv[mu.uv < lim.inf & mu.uv > lim.sup])
-  # theta estimado com base na amostra selecionada
+  # theta estimated based on the selected sample
   theta.hat <- sapply(samp.cond, g.theta.inv)
-  # variância obtida pelo método delta para a inversa da função
+  # variance obtained by the delta method for the inverse of the function
   kappa2 <- gamma2*(der.inv)^2 
-  # padronizando o theta estimado
+  # standardizing the estimated theta
   theta.hat.pad <- (sqrt(n)*(theta.hat-theta))/sqrt(kappa2) 
-  # Estimativas de q
+  # q estimates
   q.hat <- (3+theta.hat)/(2+theta.hat) 
-  # Variância assintótica de q
+  # Asymptotic variance of q
   var.qhat <- (inv.esp+2)^(-4)*kappa2
-  # Valor verdadeiro de q
+  # True value of q
   q.real <- (3+theta)/(2+theta) 
-  # padronizando o q estimado
+  # standardizing the estimated q
   q.hat.pad <- (sqrt(n)*(q.hat-q.real))/sqrt(var.qhat) 
   
   #d.q.theta <- data.frame(theta.hat,theta.hat.pad,q.hat,q.hat.pad)
