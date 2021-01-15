@@ -37,10 +37,10 @@ analz.samples <- function(values, samples, v, u = -v){
   # Plot g(theta) and the values of the statistic Tn = T_v^u/T_u^v
   p <- ggplot(data = data.frame(x = 0,z=lim.sup, w = mu.uv), mapping = aes(x = x,w)) +
     stat_function(fun = g.theta.n) + xlim(0,500) + 
-    labs(title = bquote(paste("u = ", .(u), ", v = ", .(v))),x=expression(theta), y = bquote(paste("g(",theta,")"))) +
+    labs(title = bquote(paste("v = ", .(v),", u = ", .(u))),x=expression(theta), y = bquote(paste("g(",theta,")"))) +
     theme_bw() + theme(plot.title = element_text(hjust = 0.5))+
     geom_hline(yintercept = lim.sup, linetype = 5,size=0.5)+
-    geom_point(colour = "black", size = 0.3)
+    geom_point(colour = "black", size = 0.25)
   
   p.n <- ggplot(data = data.frame(x = 0,z=lim.sup, w = mu.uv), mapping = aes(x = x,w)) +
     stat_function(fun = g.theta.n) + xlim(0,500) + 
@@ -50,6 +50,6 @@ analz.samples <- function(values, samples, v, u = -v){
     geom_point(colour = "black", size = 0.3)
   
   
-  return(list(p, p.n, mu.uv, lim.inf, lim.sup, prop.rejec, probM, x.lim1,x.lim2))
+  return(list(p, p.n, mu.uv, lim.inf, lim.sup, prop.rejec))
 }
 

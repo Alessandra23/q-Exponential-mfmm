@@ -6,7 +6,6 @@ library(gridExtra)
 theme_set(theme_bw())
 
 source("qexp_functions.R")
-source("qexp_generate_samples.R")
 
 # Plots qexp kappa and q
 
@@ -158,7 +157,7 @@ d.exp = dexp(x,1)
 df.comp <- data.frame(x,d.qexp,d.exp)
 p.comp.1 <- ggplot(melt(df.comp,id.vars='x'), aes(x,value,group=variable)) +
               geom_line(aes(linetype = variable)) +
-              scale_linetype_discrete("", labels = c("q-Exponencial", "Exponencial"))+
+              scale_linetype_discrete("", labels = c("q-Exponential", "Exponential"))+
               xlab("x") + ylab("f(x)") +
               theme(legend.position=c(0.8,0.8))
 
@@ -168,7 +167,7 @@ p.comp.1
 p.comp.2 <- ggplot(melt(df.comp,id.vars='x'), aes(x,value,group=variable)) +
   geom_line(aes(linetype = variable)) +
   coord_cartesian(xlim=c(7,15), ylim = c(0,.02)) +  
-  scale_linetype_discrete("", labels = c("q-Exponencial", "Exponencial")) +
+  scale_linetype_discrete("", labels = c("q-Exponential", "Exponential")) +
   xlab("x") + ylab("f(x)") +
   theme(legend.position=c(0.8,0.8))
 

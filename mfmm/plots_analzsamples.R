@@ -6,6 +6,11 @@ library(gridExtra)
 library(ggplot2)
 theme_set(theme_bw())
 
+source("qexp_functions.R")
+source("qexp_generate_samples.R")
+source("mfmm/gtheta_function.R")
+source("mfmm/analz.samples.R")
+
 ## plots to theta = 1/9
 
 values <- list(N = 10000,
@@ -43,6 +48,12 @@ grid.arrange(analz.samples(values, samples = samples, v = -0.1)[[1]],
              analz.samples(values, samples = samples, v = 0.4)[[1]], 
              ncol=4)
 
+# observing only the positive values of v
+grid.arrange(analz.samples(values, samples = samples, v = 0.1)[[1]], 
+             analz.samples(values, samples = samples, v = 0.2)[[1]], 
+             analz.samples(values, samples = samples, v = 0.3)[[1]], 
+             analz.samples(values, samples = samples, v = 0.4)[[1]], 
+             ncol=4)
 
 
 ## plots to theta = 1

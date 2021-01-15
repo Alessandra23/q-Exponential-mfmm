@@ -1,6 +1,11 @@
 #' g(theta) plots 
 #' 
 #'
+#'
+
+source("qexp_functions.R")
+source("qexp_generate_samples.R")
+source("mfmm/gtheta_function.R")
 
 library(gridExtra)
 theme_set(theme_bw())
@@ -14,7 +19,8 @@ df.v1 <- data.frame(df.v1, x = rep(0:100,length(v1)))
 p.v1 <- ggplot(melt(df.v1,id.vars='x'), aes(x,value,group=variable))+
           geom_line(aes(linetype = variable)) +
           scale_linetype_discrete(labels=v1, name="v")+
-          labs(x=expression(theta), y = bquote(paste("g(",theta,")")))
+          labs(x=expression(theta), y = bquote(paste("g(",theta,")")))+
+          theme(legend.position=c(0.85,0.2))
 
 
 p.v1
@@ -29,12 +35,13 @@ df.v2 <- data.frame(df.v2, x = rep(0:100,length(v2)))
 p.v2 <- ggplot(melt(df.v2,id.vars='x'), aes(x,value,group=variable))+
   geom_line(aes(linetype = variable)) +
   scale_linetype_discrete(labels=v2, name="v")+
-  labs(x=expression(theta), y = bquote(paste("g(",theta,")")))
+  labs(x=expression(theta), y = bquote(paste("g(",theta,")")))+
+  theme(legend.position=c(0.85,0.8))
 
 
 p.v2
 
-grid.arrange(p.v1,p.v2)
+grid.arrange(p.v1,p.v2, nrow = 1)
 
 
 # v = -0.5:0.5
