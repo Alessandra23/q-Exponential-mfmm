@@ -3,7 +3,6 @@ library(GoFKernel) ## Calculate the inverse
 library(numDeriv)  ## Calculate derivatives
 theme_set(theme_bw())
 
-
 # Theoretical quantities for the mfmm 
 mfmm.theo <- function(n, mu, theta, v, u = -v, samples, d=1e-10){
   
