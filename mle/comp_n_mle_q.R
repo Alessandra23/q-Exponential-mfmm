@@ -1,6 +1,9 @@
 # Compare sample sizes to standardized q MLE.
 theme_set(theme_bw())
 
+source("qexp_functions.R")
+source("qexp_generate_samples.R")
+
 quan.teo.mv.q <- function(n, N, mu, theta){
   
   q.real <- (theta+3)/(theta+2)

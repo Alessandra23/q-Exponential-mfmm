@@ -1,4 +1,9 @@
 #' Plot densities
+#' 
+#' @import ggplot2
+#' @importFrom gridExtra "grid.arrange"
+#' @importFrom reshape2 "melt"
+#' 
 
 library(reshape2)
 library(ggplot2)
