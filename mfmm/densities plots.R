@@ -1,19 +1,16 @@
-#' Plot densities
-#' 
-#' @import ggplot2
-#' @importFrom gridExtra "grid.arrange"
-#' @importFrom reshape2 "melt"
-#' 
+# Plot densities
+
+library(devtools)
+devtools::install_github("Alessandra23/q-Exponential-mfmm/qExponential")
+library(qExponential)
 
 library(reshape2)
 library(ggplot2)
 library(gridExtra)
 theme_set(theme_bw())
 
-source("qexp_functions.R")
 
 # Plots qexp kappa and q
-
 
 # setting kappa
 

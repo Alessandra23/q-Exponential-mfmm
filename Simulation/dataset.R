@@ -4,8 +4,8 @@ library(qExponential)
 
 save_file = "~/Documents/GitHub/Mestrado/q-Exponential-mfmm/Simulation/Results/"
 
-N <- 10000
-n <- 1000
+N <- 10
+n <- 5
 mu <- log(3)
 theta <- c(1/9, 1, 9, 100)
 
@@ -16,7 +16,7 @@ allcomb <- expand.grid(N = N,
 
 
 ncomb <- nrow(allcomb)
-seed  <- 4 # start seed
+seed  <- 4
 
 for (i in 1:ncomb) {
   set.seed(seed)
@@ -38,3 +38,4 @@ for (i in 1:ncomb) {
   save(data, file = paste(save_file, data_filename, sep=''))
 
 }
+
