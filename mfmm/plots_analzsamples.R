@@ -6,16 +6,29 @@ library(gridExtra)
 library(ggplot2)
 theme_set(theme_bw())
 
-source("mfmm/analz.samples.R")
+
+save_file <- "/Documents/GitHub/Mestrado/q-Exponential-mfmm/Simulation/Results/"
+setwd(save_file)
+
 
 ## plots to theta = 1/9
 
-values <- list(N = 10,
-               n = 5,
+values <- list(N = 10000,
+               n = 1000,
                mu = log(3),
                theta = 1/9)
 
-samples <- qexp.samples(N=values$N,n=values$n,theta=values$theta,mu=values$mu)
+filename <- paste('N', values$N,
+                  'n', values$n,
+                  'mu', round(values$mu,2),
+                  'theta', round(values$theta,2),
+                  sep='')
+data_filename <-  paste(filename, '_data.RData',sep='')
+load(paste(save_file, data_filename,sep=''))
+
+
+samples <- data
+
 
 grid.arrange(analz.samples(values, samples = samples, v = -0.1)[[1]],
              analz.samples(values, samples = samples, v = 0.1)[[1]], ncol=2)
@@ -60,7 +73,16 @@ values <- list(N = 10000,
                mu = log(3),
                theta = 1)
 
-samples <- qexp.samples(N=values$N,n=values$n,theta=values$theta,mu=values$mu)
+filename <- paste('N', values$N,
+                  'n', values$n,
+                  'mu', round(values$mu,2),
+                  'theta', round(values$theta,2),
+                  sep='')
+data_filename <-  paste(filename, '_data.RData',sep='')
+load(paste(save_file, data_filename,sep=''))
+
+
+samples <- data
 
 grid.arrange(analz.samples(values, samples = samples, v = -0.1)[[1]],
              analz.samples(values, samples = samples, v = 0.1)[[1]], ncol=2)
@@ -99,8 +121,16 @@ values <- list(N = 10000,
                mu = log(3),
                theta = 6)
 
-samples <- qexp.samples(N=values$N,n=values$n,theta=values$theta,mu=values$mu)
+filename <- paste('N', values$N,
+                  'n', values$n,
+                  'mu', round(values$mu,2),
+                  'theta', round(values$theta,2),
+                  sep='')
+data_filename <-  paste(filename, '_data.RData',sep='')
+load(paste(save_file, data_filename,sep=''))
 
+
+samples <- data
 grid.arrange(analz.samples(values, samples = samples, v = -0.1)[[1]],
              analz.samples(values, samples = samples, v = 0.1)[[1]], ncol=2)
 
@@ -138,7 +168,15 @@ values <- list(N = 10000,
                mu = log(3),
                theta = 100)
 
-samples <- qexp.samples(N=values$N,n=values$n,theta=values$theta,mu=values$mu)
+filename <- paste('N', values$N,
+                  'n', values$n,
+                  'mu', round(values$mu,2),
+                  'theta', round(values$theta,2),
+                  sep='')
+data_filename <-  paste(filename, '_data.RData',sep='')
+load(paste(save_file, data_filename,sep=''))
+
+samples <- data
 
 grid.arrange(analz.samples(values, samples = samples, v = -0.1)[[1]],
              analz.samples(values, samples = samples, v = 0.1)[[1]], ncol=2)
@@ -179,7 +217,16 @@ values <- list(N = 10000,
                mu = log(3),
                theta = 1/9)
 
-samples <- qexp.samples(N=values$N,n=values$n,theta=values$theta,mu=values$mu)
+filename <- paste('N', values$N,
+                  'n', values$n,
+                  'mu', round(values$mu,2),
+                  'theta', round(values$theta,2),
+                  sep='')
+data_filename <-  paste(filename, '_data.RData',sep='')
+load(paste(save_file, data_filename,sep=''))
+
+samples <- data
+
 p.n1 <- analz.samples(values, samples = samples, v = 0.4)[[2]] 
 
 
@@ -190,7 +237,17 @@ values <- list(N = 10000,
                mu = log(3),
                theta = 1/9)
 
-samples <- qexp.samples(N=values$N,n=values$n,theta=values$theta,mu=values$mu)
+filename <- paste('N', values$N,
+                  'n', values$n,
+                  'mu', round(values$mu,2),
+                  'theta', round(values$theta,2),
+                  sep='')
+data_filename <-  paste(filename, '_data.RData',sep='')
+load(paste(save_file, data_filename,sep=''))
+
+
+samples <- data
+
 p.n2 <- analz.samples(values, samples = samples, v = 0.4)[[2]] 
 
 
@@ -201,7 +258,16 @@ values <- list(N = 10000,
                mu = log(3),
                theta = 1/9)
 
-samples <- qexp.samples(N=values$N,n=values$n,theta=values$theta,mu=values$mu)
+filename <- paste('N', values$N,
+                  'n', values$n,
+                  'mu', round(values$mu,2),
+                  'theta', round(values$theta,2),
+                  sep='')
+data_filename <-  paste(filename, '_data.RData',sep='')
+load(paste(save_file, data_filename,sep=''))
+
+samples <- data
+
 p.n3 <- analz.samples(values, samples = samples, v = 0.4)[[2]] 
 
 
@@ -212,7 +278,16 @@ values <- list(N = 10000,
                mu = log(3),
                theta = 1/9)
 
-samples <- qexp.samples(N=values$N,n=values$n,theta=values$theta,mu=values$mu)
+filename <- paste('N', values$N,
+                  'n', values$n,
+                  'mu', round(values$mu,2),
+                  'theta', round(values$theta,2),
+                  sep='')
+data_filename <-  paste(filename, '_data.RData',sep='')
+load(paste(save_file, data_filename,sep=''))
+
+samples <- data
+
 p.n4 <- analz.samples(values, samples = samples, v = 0.4)[[2]] 
 
 
