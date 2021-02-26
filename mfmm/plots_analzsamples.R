@@ -1,20 +1,17 @@
-#' Plots of the function g(theta) with samples and asymptotes.
-#' 
-#' 
+library(devtools)
+devtools::install_github("Alessandra23/q-Exponential-mfmm/qExponential")
+library(qExponential)
 
 library(gridExtra)
 library(ggplot2)
 theme_set(theme_bw())
 
-source("qexp_functions.R")
-source("qexp_generate_samples.R")
-source("mfmm/gtheta_function.R")
 source("mfmm/analz.samples.R")
 
 ## plots to theta = 1/9
 
-values <- list(N = 10000,
-               n = 1000,
+values <- list(N = 10,
+               n = 5,
                mu = log(3),
                theta = 1/9)
 

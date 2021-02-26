@@ -4,9 +4,9 @@ library(qExponential)
 
 save_file = "~/Documents/GitHub/Mestrado/q-Exponential-mfmm/Simulation/Results/"
 
-N <- 10
-n <- 5
-mu <- log(3)
+N <- 10000
+n <- c(20,100,500,1000, 5000, 10000)
+mu <- c(1/10, log(3), 10)
 theta <- c(1/9, 1, 9, 100)
 
 allcomb <- expand.grid(N = N,
