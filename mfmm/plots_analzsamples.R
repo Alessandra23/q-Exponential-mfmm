@@ -3,7 +3,6 @@ devtools::install_github("Alessandra23/q-Exponential-mfmm/qExponential")
 library(qExponential)
 
 library(gridExtra)
-
 theme_set(theme_bw())
 
 
@@ -25,8 +24,6 @@ filename <- paste('N', values$N,
                   sep='')
 data_filename <-  paste(filename, '_data.RData',sep='')
 load(paste(save_file, data_filename,sep=''))
-
-data <- qexp.samples(N = values$N,n = values$n, theta = values$theta, mu = valuesmu)
 
 samples <- data
 
