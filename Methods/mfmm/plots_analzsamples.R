@@ -3,7 +3,7 @@ devtools::install_github("Alessandra23/q-Exponential-mfmm/qExponential")
 library(qExponential)
 
 library(gridExtra)
-theme_set(theme_bw())
+# theme_set(theme_bw())
 
 
 save_file <- "~/Documents/GitHub/Mestrado/q-Exponential-mfmm/Simulation/Results/"

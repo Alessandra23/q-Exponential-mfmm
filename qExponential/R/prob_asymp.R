@@ -1,13 +1,13 @@
 #' Analyze the value of n using the theoretical quantities
 #'
+#' @import tidyverse
+#' @import ggplot2
 #' @param n
 #' @param values
 #' @param v
 #' @param u
 #' @export
 #'
-
-
 prob.asym <- function(n,mu, theta,v, u=-v){
 
   # theoretical quantities
@@ -32,3 +32,43 @@ prob.asym <- function(n,mu, theta,v, u=-v){
   return(list(prob.M, x.lim1,x.lim2))
 }
 
+
+#'
+#'
+#' Graph for n and the probability of rejecting
+
+#' @export
+plot.reject <- function(n, mu, theta, v){
+
+  lim <- unlist(prob.asym(n = n, mu = mu , theta = theta, v=v)[2])
+  lim <- ifelse(lim < 200,200,lim)
+  lim <- seq(0,lim,length=1000)
+
+
+  mat.pr <- sapply(c(0.1,0.2,0.3,0.4),function(i){
+    sapply(lim, prob.asym, mu = mu, theta = theta ,v=i)[1,]
+  })
+
+  df.pr <- gather(mat.pr %>% as.data.frame())
+
+
+  df.pr <- df.pr %>%
+    mutate(key=case_when(
+      key=="V1"~0.1,
+      key=="V2"~0.2,
+      key=="V3"~0.3,
+      TRUE ~ 0.4)
+    ) %>% cbind(x=rep(lim,4))
+
+  df.pr$x <- unlist(df.pr$x)
+  df.pr$value <- unlist(df.pr$value)
+
+  p.pr <-   ggplot(df.pr, aes(x=x,y=value)) +
+    geom_line() +
+    facet_wrap(~key, labeller = label_bquote(paste("v = ",.(key))), scales = "fixed") +
+    labs(x=expression(n), y = expression(Phi(sqrt(n)*(l[uv]-mu[uv])/kappa))) +
+    geom_hline(yintercept = 0.97, linetype = 5,size=0.5) + theme_bw()
+
+  return(p.pr)
+
+}

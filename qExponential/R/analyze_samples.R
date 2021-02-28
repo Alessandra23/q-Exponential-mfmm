@@ -2,7 +2,7 @@
 #'
 #' @description Function to analyze samples
 #'
-#' @importFrom  GoFKernel 'inverse'
+#' @importFrom  GoFKernel "inverse"
 #' @import numDeriv
 #' @import ggplot2
 #' @param values
@@ -46,14 +46,14 @@ analz.samples <- function(values, samples, v, u = -v){
     labs(title = bquote(paste("v = ", .(v),", u = ", .(u))),x=expression(theta), y = bquote(paste("g(",theta,")"))) +
     theme_bw() + theme(plot.title = element_text(hjust = 0.55, size = rel(1)))+
     geom_hline(yintercept = lim.sup, linetype = 5,size=0.5)+
-    geom_point(colour = "black", size = 0.25)
+    geom_point(colour = "black", size = 0.25) + theme_bw()
 
   p.n <- ggplot(data = data.frame(x = 0,z=lim.sup, w = mu.uv), mapping = aes(x = x,w)) +
     stat_function(fun = g.theta.n) + xlim(0,500) +
     labs(title = bquote(paste("n = ", .(n),", Rejected proportion = ",.(prop.rejec))),x=expression(theta), y = bquote(paste("g(",theta,")"))) +
     theme_bw() + theme(plot.title = element_text(hjust = 0.55, size = rel(1)))+
     geom_hline(yintercept = lim.sup, linetype = 5,size=0.5)+
-    geom_point(colour = "black", size = 0.3)
+    geom_point(colour = "black", size = 0.3) + theme_bw()
 
 
   return(list(p, p.n, mu.uv, lim.inf, lim.sup, prop.rejec))
