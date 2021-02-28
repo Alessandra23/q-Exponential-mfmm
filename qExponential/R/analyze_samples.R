@@ -1,4 +1,6 @@
-#' Function to analyze samples
+#' analz.samples
+#'
+#' @description Function to analyze samples
 #'
 #' @importFrom  GoFKernel 'inverse'
 #' @import numDeriv
@@ -6,9 +8,13 @@
 #' @param v
 #' @param u
 #' @param samples
+#'
+#' @return
+#'
+#' @example analz.samples(values = list(1,1,2,3),samples = qexp.samples(2,3,1,1), v = 0.1)
+#'
 #' @export
 #'
-
 analz.samples <- function(values, samples, v, u = -v){
 
   mu <- values$mu
