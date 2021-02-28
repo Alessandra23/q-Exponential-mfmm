@@ -7,7 +7,7 @@ library(ggplot2)
 theme_set(theme_bw())
 
 
-save_file <- "/Documents/GitHub/Mestrado/q-Exponential-mfmm/Simulation/Results/"
+save_file <- "~/Documents/GitHub/Mestrado/q-Exponential-mfmm/Simulation/Results/"
 setwd(save_file)
 
 

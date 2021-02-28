@@ -63,7 +63,6 @@ gen_q_pad <- function(samples, values, theta){
   n <- values$n
   mu <- values$mu
   theta <- values$theta
-  v <- values$v
   
   q.hat.pad <- mfmm.theo(n = n, mu = mu, theta = theta, v = v, u = -v, samples = samples)$q.hat.pad
   

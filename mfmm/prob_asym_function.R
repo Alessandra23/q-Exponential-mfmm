@@ -12,13 +12,14 @@ theme_set(theme_bw())
 
 
 plot.reject <- function(n, mu, theta, v){
-  lim <- prob.asym(n = n, mu = mu , theta = theta, v=v)[2]
+  
+  lim <- unlist(prob.asym(n = n, mu = mu , theta = theta, v=v)[2])
   lim <- ifelse(lim < 200,200,lim)
   lim <- seq(0,lim,length=1000)
   
   
   mat.pr <- sapply(c(0.1,0.2,0.3,0.4),function(i){
-    sapply(lim,prob.asym, mu = log(3), theta = 1/9 ,v=i)[1,]
+    sapply(lim, prob.asym, mu = mu, theta = theta ,v=i)[1,]
   })
   
   df.pr <- gather(mat.pr %>% as.data.frame())
@@ -45,7 +46,16 @@ plot.reject <- function(n, mu, theta, v){
   
 }
 
+
 # theta = 1/9 
+
+values <- list(n = 5,
+               mu = log(3),
+               theta = 1/9,
+               v = 0.4)
+
+plot.reject(n = values$n, mu = values$mu, theta = values$theta, v = values$v)
+
 
 lim <- prob.asym(n = 1000, mu = log(3), theta = 1/9, v=0.4)[2]
 lim <- ifelse(lim < 200,200,lim)
@@ -81,6 +91,16 @@ p.pr
 
 
 # theta = 1
+
+values <- list(n = 5,
+               mu = log(3),
+               theta = 1,
+               v = 0.4)
+
+plot.reject(n = values$n, mu = values$mu, theta = values$theta, v = values$v)
+
+
+
 
 lim <- unlist(prob.asym(n = 1000, mu = log(3), theta = 1, v=0.4)[2])
 lim <- seq(0,lim,length=1000)
