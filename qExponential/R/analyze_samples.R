@@ -4,6 +4,7 @@
 #'
 #' @importFrom  GoFKernel 'inverse'
 #' @import numDeriv
+#' @import ggplot2
 #' @param values
 #' @param v
 #' @param u

@@ -3,7 +3,7 @@ devtools::install_github("Alessandra23/q-Exponential-mfmm/qExponential")
 library(qExponential)
 
 library(gridExtra)
-library(ggplot2)
+
 theme_set(theme_bw())
 
 
@@ -26,6 +26,7 @@ filename <- paste('N', values$N,
 data_filename <-  paste(filename, '_data.RData',sep='')
 load(paste(save_file, data_filename,sep=''))
 
+data <- qexp.samples(N = values$N,n = values$n, theta = values$theta, mu = valuesmu)
 
 samples <- data
 
@@ -113,13 +114,21 @@ grid.arrange(analz.samples(values, samples = samples, v = -0.1)[[1]],
              ncol=4)
 
 
+# observing only the positive values of v
+grid.arrange(analz.samples(values, samples = samples, v = 0.1)[[1]], 
+             analz.samples(values, samples = samples, v = 0.2)[[1]], 
+             analz.samples(values, samples = samples, v = 0.3)[[1]], 
+             analz.samples(values, samples = samples, v = 0.4)[[1]], 
+             ncol=4)
+
+
 
 ## plots to theta = 6
 
 values <- list(N = 10000,
                n = 1000,
                mu = log(3),
-               theta = 6)
+               theta = 9)
 
 filename <- paste('N', values$N,
                   'n', values$n,
@@ -131,6 +140,7 @@ load(paste(save_file, data_filename,sep=''))
 
 
 samples <- data
+
 grid.arrange(analz.samples(values, samples = samples, v = -0.1)[[1]],
              analz.samples(values, samples = samples, v = 0.1)[[1]], ncol=2)
 
@@ -159,6 +169,13 @@ grid.arrange(analz.samples(values, samples = samples, v = -0.1)[[1]],
              analz.samples(values, samples = samples, v = 0.4)[[1]], 
              ncol=4)
 
+
+# observing only the positive values of v
+grid.arrange(analz.samples(values, samples = samples, v = 0.1)[[1]], 
+             analz.samples(values, samples = samples, v = 0.2)[[1]], 
+             analz.samples(values, samples = samples, v = 0.3)[[1]], 
+             analz.samples(values, samples = samples, v = 0.4)[[1]], 
+             ncol=4)
 
 
 ## plots to theta = 100
