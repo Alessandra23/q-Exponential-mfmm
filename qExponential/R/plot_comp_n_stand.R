@@ -6,12 +6,12 @@ comp.n.q.pad <- function(values, n.values, v.values){
 
   y <- lapply(v.values, function(values, v, n){
 
-    N <- values$N
+    #N <- values$N
     mu <- values$mu
     theta <- values$theta
     n <- n
 
-    x <- lapply(n, gen_q_pad, N = N, v = v, mu = mu, theta = theta)
+    x <- lapply(n, gen_q_pad,  v = v, mu = mu, theta = theta)
     names(x) <- n
 
     return(x)

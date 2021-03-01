@@ -8,7 +8,7 @@ theme_set(theme_bw())
 
 #' theta = 1/9, n = 50, 91, 1000
 
-values <- list(N = 100,
+values <- list(n = 100,
                mu = log(3),
                theta = 1/9)
 n.values = c(50, 91, 1000)
