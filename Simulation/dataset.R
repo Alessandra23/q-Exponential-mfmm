@@ -10,10 +10,10 @@ save_file = "~/Documents/GitHub/Mestrado/q-Exponential-mfmm/Simulation/Results/"
 #theta <- c(1/9, 1, 9, 100)
 
 
-N <- 10
-n <- 5
-mu <- c(1/10, log(3), 10)
-theta <- c(1/9, 1, 9, 100)
+N <- 10000
+n <- c(4179, 9987, 25000)
+mu <- log(3)
+theta <- 9
 
 allcomb <- expand.grid(N = N,
                     n = n,
