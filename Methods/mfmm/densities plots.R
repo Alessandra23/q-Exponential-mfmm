@@ -7,6 +7,7 @@ library(qExponential)
 library(reshape2)
 library(ggplot2)
 library(gridExtra)
+library(grid)
 theme_set(theme_bw())
 
 
@@ -149,6 +150,49 @@ p.mt.3
 grid.arrange(p.mt.1,p.mt.2, p.mt.3, nrow = 1)
 
 
+
+## Paper - 4 cases
+
+
+
+theta.1 = 0.5
+theta.2 = 9
+
+
+# setting mu = 1 and mu = 10
+
+x <- seq(0,20,length=1000)
+v1.mt.1 <- dtsal(x,shape = theta.1+1, scale = 1*theta.1)
+v1.mt.2 <- dtsal(x,shape = theta.2+1, scale = 1*theta.2)
+v1.mt.3 <- dtsal(x,shape = theta.1+10, scale = 10*theta.1)
+v1.mt.4 <- dtsal(x,shape = theta.2+10, scale = 10*theta.2)
+
+df.mt.paper <- data.frame(x = x, v1 = v1.mt.1, v2 = v1.mt.2, v3 = v1.mt.3, v4 = v1.mt.4)
+
+
+legenda.paper <- c(expression(paste(mu, " = 1.0,  ", ~theta," = 0.5 "), 
+                   paste(~mu, " = 1.0,  ", ~theta," = 9.0 "),
+                   paste(~mu, " = 10,   ", ~theta," = 0.5 "),
+                   paste(~mu, " = 10,   ", ~theta," = 9.0 ")))
+
+p.mt.paper <- ggplot(melt(df.mt.paper,id.vars='x'), aes(x,value,group=variable))+
+  geom_line(aes(linetype = variable)) + ylab("f(x)")+
+  scale_linetype_discrete(labels=legenda.paper, name=" ")+
+  theme(
+    legend.position = c(.95, .95),
+    legend.justification = c("right", "top"),
+    legend.box.just = "right",
+    legend.margin = margin(6, 6, 6, 6),
+    legend.title = element_text(size = 8),
+    legend.text.align = 1
+  )
+
+
+p.mt.paper
+
+
+
+
 # Comparison of the tails of the Exponential and qExponential distributions (theta = 1 and mu = 1)
 
 theta = 1 ; mu = 1
@@ -167,16 +211,22 @@ p.comp.1 <- ggplot(melt(df.comp,id.vars='x'), aes(x,value,group=variable)) +
 p.comp.1
 
 p.comp.2 <- ggplot(melt(df.comp,id.vars='x'), aes(x,value,group=variable)) +
-  geom_line(aes(linetype = variable)) +
-  coord_cartesian(xlim=c(7,15), ylim = c(0,.02)) +  
-  scale_linetype_discrete("", labels = c("q-Exponential", "Exponential")) +
-  xlab("x") + ylab("f(x)") +
-  theme(legend.position=c(0.8,0.8))
+  geom_line(aes(linetype = variable), show.legend = FALSE) +
+  coord_cartesian(xlim=c(7,15), ylim = c(0,0.005)) +  
+  #scale_linetype_discrete("", labels = c("q-Exponential", "Exponential")) +
+ # xlab("x") + ylab("f(x)") +
+  xlab("") + ylab("") +
+  theme(legend.position=c(0.8,0.8)) 
 
 
 p.comp.2
 
 grid.arrange(p.comp.1,p.comp.2, nrow = 1)
+
+p.comp.1 + annotation_custom(ggplotGrob(p.comp.2), xmin = 6, xmax = 15, 
+                             ymin = 0.01, ymax = 1)
+
+
 
 
 
