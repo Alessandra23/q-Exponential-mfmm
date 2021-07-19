@@ -63,7 +63,7 @@ grid.arrange(analz.samples(values, samples = samples, v = 0.1)[[1]],
              analz.samples(values, samples = samples, v = 0.4)[[1]], 
              ncol=4)
 
-ana.samples.paper.1 <- analz.samples(values, samples = samples, v = 0.4)[[1]] +labs(title = "")
+ana.samples.paper.1 <- analz.samples(values, samples = samples, v = 0.4)[[1]] + labs(title = "")
 
 ## plots to theta = 1
 

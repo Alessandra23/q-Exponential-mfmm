@@ -71,3 +71,16 @@ gen_q_pad <- function(samples, values, theta){
 }
 
 
+#' Select only theta.hat.pad
+#' @export
+gen_q_pad <- function(samples, values, theta){
+  
+  n <- values$n
+  mu <- values$mu
+  theta <- values$theta
+  theta.hat.pad <- mfmm.theo(n = n, mu = mu, theta = theta, v = v, u = -v, samples = samples)$theta.hat.pad
+  
+  return(theta.hat.pad)
+}
+
+

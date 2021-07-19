@@ -56,4 +56,20 @@ p.v3 <- ggplot(melt(df.v3,id.vars='x'), aes(x,value,group=variable))+
 p.v3
 
 
+# Colour
+v4 <- c(v1,v2)
+theta <- c(0:100)
+df.v4 <- outer(theta, v4,g.theta) 
+df.v4 <- data.frame(df.v4, x = rep(0:100,length(v4)))
+library(RColorBrewer)
+# display.brewer.all(colorblindFriendly = TRUE)
+
+p.v4 <- ggplot(melt(df.v4,id.vars='x'), aes(x,value,colour=variable))+
+  geom_line(aes(color = variable), size = 0.8) +
+  labs(x=expression(theta), y = bquote(paste("g(",theta,")")), color = "v") + 
+  scale_color_brewer(palette = "RdBu", labels = v4) 
+
+p.v4
+
+
 
