@@ -10,6 +10,45 @@ save_file <- "~/Documents/GitHub/Mestrado/q-Exponential-mfmm/Simulation/Results/
 setwd(save_file)
 
 
+## Teste
+
+values <- list(N = 50,
+               n = 10,
+               mu = log(3),
+               theta = 9)
+
+filename <- paste('N', values$N,
+                  'n', values$n,
+                  'mu', round(values$mu,2),
+                  'theta', round(values$theta,2),
+                  sep='')
+data_filename <-  paste(filename, '_data.RData',sep='')
+load(paste(save_file, data_filename,sep=''))
+
+samples <- data
+
+
+grid.arrange(analz.samples(values, samples = samples, v = -0.1)[[1]],
+             analz.samples(values, samples = samples, v = 0.1)[[1]], ncol=2)
+
+grid.arrange(analz.samples(values, samples = samples, v = -0.2)[[1]],
+             analz.samples(values, samples = samples, v = 0.2)[[1]], ncol=2)
+
+grid.arrange(analz.samples(values, samples = samples, v = -0.3)[[1]],
+             analz.samples(values, samples = samples, v = 0.3)[[1]], ncol=2)
+
+grid.arrange(analz.samples(values, samples = samples, v = -0.4)[[1]],
+             analz.samples(values, samples = samples, v = 0.4)[[1]], ncol=2)
+
+grid.arrange(analz.samples(values, samples = samples, v = -0.5)[[1]],
+             analz.samples(values, samples = samples, v = 0.5)[[1]], ncol=2)
+
+####
+
+
+
+
+
 ## plots to theta = 1/9
 
 values <- list(N = 10000,

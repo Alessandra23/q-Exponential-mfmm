@@ -15,6 +15,12 @@ n <- c(4179, 9987, 25000)
 mu <- log(3)
 theta <- 9
 
+
+N <- 50
+n <- 10
+mu <- log(3)
+theta <- 9
+
 allcomb <- expand.grid(N = N,
                     n = n,
                     mu = mu,
